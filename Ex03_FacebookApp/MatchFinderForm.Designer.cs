@@ -48,8 +48,7 @@
             this.comboBoxMatchGender = new System.Windows.Forms.ComboBox();
             this.labelMatchGender = new System.Windows.Forms.Label();
             this.labelMatchQuestion = new System.Windows.Forms.Label();
-            this.comboBoxSearchByResidence = new System.Windows.Forms.ComboBox();
-            this.labelShowResidence = new System.Windows.Forms.Label();
+            this.radioButtonShowResidence = new System.Windows.Forms.RadioButton();
             birthdayLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             this.panelMatchDetails.SuspendLayout();
@@ -228,35 +227,27 @@
             this.labelMatchQuestion.TabIndex = 10;
             this.labelMatchQuestion.Text = "What Are You Interested In?";
             // 
-            // comboBoxSearchByResidence
+            // radioButtonShowResidence
             // 
-            this.comboBoxSearchByResidence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSearchByResidence.FormattingEnabled = true;
-            this.comboBoxSearchByResidence.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.comboBoxSearchByResidence.Location = new System.Drawing.Point(138, 261);
-            this.comboBoxSearchByResidence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBoxSearchByResidence.Name = "comboBoxSearchByResidence";
-            this.comboBoxSearchByResidence.Size = new System.Drawing.Size(108, 24);
-            this.comboBoxSearchByResidence.TabIndex = 22;
-            // 
-            // labelShowResidence
-            // 
-            this.labelShowResidence.AutoSize = true;
-            this.labelShowResidence.Location = new System.Drawing.Point(44, 257);
-            this.labelShowResidence.Name = "labelShowResidence";
-            this.labelShowResidence.Size = new System.Drawing.Size(74, 34);
-            this.labelShowResidence.TabIndex = 21;
-            this.labelShowResidence.Text = "Show \r\nresidence:";
+            this.radioButtonShowResidence.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButtonShowResidence.AutoSize = true;
+            this.radioButtonShowResidence.Location = new System.Drawing.Point(47, 257);
+            this.radioButtonShowResidence.Name = "radioButtonShowResidence";
+            this.radioButtonShowResidence.Size = new System.Drawing.Size(129, 21);
+            this.radioButtonShowResidence.TabIndex = 23;
+            this.radioButtonShowResidence.TabStop = true;
+            this.radioButtonShowResidence.Text = "Show residence";
+            this.radioButtonShowResidence.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButtonShowResidence.UseVisualStyleBackColor = true;
             // 
             // MatchFinderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 553);
-            this.Controls.Add(this.comboBoxSearchByResidence);
-            this.Controls.Add(this.labelShowResidence);
+            this.Controls.Add(this.radioButtonShowResidence);
             this.Controls.Add(this.labelMatchesTitleReadOnly);
             this.Controls.Add(this.panelMatchDetails);
             this.Controls.Add(this.listBoxMatches);
@@ -283,8 +274,7 @@
             this.Controls.SetChildIndex(this.listBoxMatches, 0);
             this.Controls.SetChildIndex(this.panelMatchDetails, 0);
             this.Controls.SetChildIndex(this.labelMatchesTitleReadOnly, 0);
-            this.Controls.SetChildIndex(this.labelShowResidence, 0);
-            this.Controls.SetChildIndex(this.comboBoxSearchByResidence, 0);
+            this.Controls.SetChildIndex(this.radioButtonShowResidence, 0);
             this.panelMatchDetails.ResumeLayout(false);
             this.panelMatchDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
@@ -315,7 +305,6 @@
         private System.Windows.Forms.BindingSource friendListBindingSource;
         private System.Windows.Forms.PictureBox imageNormalPictureBox;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.ComboBox comboBoxSearchByResidence;
-        private System.Windows.Forms.Label labelShowResidence;
+        private System.Windows.Forms.RadioButton radioButtonShowResidence;
     }
 }

@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ex03_FacebookApp
 {
-    interface IButtonsObserver
+    public interface IButtonsObserver
     {
         event Action<FacebookForm> OnProfileButtonClicked;
+
         event Action<FacebookForm> OnMatchFinderButtonClicked;
+
         event Action<FacebookForm> OnFriendsAndAlbumsButtonClicked;
+
         event Action<FacebookForm> OnLoginLogoutButtonClicked;
     }
 }

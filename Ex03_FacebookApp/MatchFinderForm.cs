@@ -14,6 +14,7 @@ namespace Ex03_FacebookApp
     public partial class MatchFinderForm : FacebookForm
     {
         private List<User> m_MatchesList = new List<User>();
+        private IMatchFinderStrategy m_StrategyCondition = new GeneralInformationStrategy();
 
         public MatchFinderForm()
         {
@@ -47,12 +48,18 @@ namespace Ex03_FacebookApp
                     friendListBindingSource.DataSource = LoggedInUser.Friends;
                     foreach (User friend in LoggedInUser.Friends)
                     {
-                        if (!isGenderMatch(friend) ||
-                            !isRelationshipAvailable(friend) ||
-                            !isAgeMatch(friend))
+                        if (radioButtonShowResidence.Checked == true)
                         {
-                             m_MatchesList.Remove(friend);
-                             listBoxMatches.Items.Remove(friend.Name);
+                            m_StrategyCondition = new ShowResidenceStrategy() { UserAge = getAgeFromBirthday(friend.Birthday), LoggedInUser = LoggedInUser, CheckedUser = friend };
+                        }
+                        else 
+                        {
+                            m_StrategyCondition = new GeneralInformationStrategy() { UserAge = getAgeFromBirthday(friend.Birthday), LoggedInUser = LoggedInUser, CheckedUser = friend };
+                        }
+
+                        if (!m_StrategyCondition.FindMatchWithStrategy((int)numericUpDownMinAge.Value, (int)numericUpDownMaxAge.Value, (User.eGender)LoggedInUser.Gender))
+                        {
+                            friendListBindingSource.Remove(friend);
                         }
                     }
 
@@ -85,19 +92,6 @@ namespace Ex03_FacebookApp
                 numericUpDownMinAge.Value <= numericUpDownMaxAge.Value;
         }
 
-        private bool isAgeMatch(User i_Friend)
-        {
-            bool isAgeMatches = false;
-            if (i_Friend.Birthday != null)
-            {
-                int friendAge = getAgeFromBirthday(i_Friend.Birthday);
-                isAgeMatches = friendAge >= numericUpDownMinAge.Value &&
-                    friendAge <= numericUpDownMaxAge.Value;
-            }
-
-            return isAgeMatches;
-        }
-
         private int getAgeFromBirthday(string i_Birthday)
         {
             const int amountOfDaysInAYear = 365;
@@ -106,42 +100,6 @@ namespace Ex03_FacebookApp
             int ageInDays = (int)(currentTime - birthdayDateTime).TotalDays;
             int age = ageInDays / amountOfDaysInAYear;
             return age;
-        }
-
-        private bool isRelationshipAvailable(User i_Friend)
-        {
-            return i_Friend.RelationshipStatus == User.eRelationshipStatus.Widowed ||
-                    i_Friend.RelationshipStatus == User.eRelationshipStatus.Single ||
-                    i_Friend.RelationshipStatus == User.eRelationshipStatus.Separated ||
-                    i_Friend.RelationshipStatus == User.eRelationshipStatus.Divorced;
-        }
-
-        private bool isGenderMatch(User i_Friend)
-        {
-            bool isFriendInterested = false;
-            bool isFriendGenderMatch = false;
-            if (i_Friend.InterestedIn != null)
-            {
-                foreach (User.eGender gender in i_Friend.InterestedIn)
-                {
-                    if (gender == LoggedInUser.Gender)
-                    {
-                        isFriendInterested = true;
-                    }
-                }
-            }
-
-            if (comboBoxMatchGender.SelectedItem.ToString().ToLower() == "both")
-            {
-                isFriendGenderMatch = true;
-            }
-            else if (i_Friend.Gender != null)
-            {
-                isFriendGenderMatch = i_Friend.Gender.ToString().ToLower() ==
-                    comboBoxMatchGender.SelectedItem.ToString().ToLower();
-            }
-
-            return isFriendGenderMatch && isFriendInterested;
         }
     }
 }

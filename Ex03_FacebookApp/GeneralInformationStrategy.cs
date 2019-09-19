@@ -7,14 +7,15 @@ using FacebookWrapper.ObjectModel;
 
 namespace Ex03_FacebookApp
 {
-    class GeneralInformationStrategy : IMatchFinderStrategy
+    public class GeneralInformationStrategy : IMatchFinderStrategy
     {
         public User LoggedInUser { get; set; }
 
         public User CheckedUser { get; set; }
 
         public int UserAge { get; set; }
-        public bool FindMatchByCondition(int i_FromAge, int i_ToAge, User.eGender i_WantedGender)
+
+        public bool FindMatchWithStrategy(int i_FromAge, int i_ToAge, User.eGender i_WantedGender)
         {
             bool result = false;
 

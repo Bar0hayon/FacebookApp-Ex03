@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ex03_FacebookApp
 {
-    class SwitchFormsVisitor
+    public class SwitchFormsVisitor
     {
         public void SwitchForms(FacebookForm i_FormToClose, FacebookForm i_FormToShow)
         {

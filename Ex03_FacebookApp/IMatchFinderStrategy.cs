@@ -9,7 +9,7 @@ namespace Ex03_FacebookApp
 {
     public interface IMatchFinderStrategy
     {
-        bool FindMatchByCondition(int i_FromAge, int i_ToAge, User.eGender i_WandtedGender);
+        bool FindMatchWithStrategy(int i_FromAge, int i_ToAge, User.eGender i_WandtedGender);
 
         User LoggedInUser { get; set; }
 

@@ -14,8 +14,11 @@ namespace Ex03_FacebookApp
     public partial class FacebookForm : Form, IButtonsObserver
     {
         public event Action<FacebookForm> OnProfileButtonClicked;
+
         public event Action<FacebookForm> OnMatchFinderButtonClicked;
+
         public event Action<FacebookForm> OnFriendsAndAlbumsButtonClicked;
+
         public event Action<FacebookForm> OnLoginLogoutButtonClicked;
 
         public User LoggedInUser { get; set; }

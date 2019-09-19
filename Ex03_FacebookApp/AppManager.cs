@@ -166,6 +166,7 @@ namespace Ex03_FacebookApp
         {
             m_SwitchFormsVisitor.SwitchForms(i_SenderForm, m_FriendsAndAlbumsForm);
         }
+
         public static void OnMatchFinderButtonClicked(FacebookForm i_SenderForm)
         {
             m_SwitchFormsVisitor.SwitchForms(i_SenderForm, m_MatchFinderForm);
